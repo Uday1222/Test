@@ -4,12 +4,12 @@
         Title="File Selection and Upload" Height="350" Width="500">
 
     <Grid>
-        <StackPanel Margin="10">
-            <Button Content="Browse" Width="80" Height="30" Click="BrowseButton_Click"/>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button Content="Browse" Width="80" Height="30" Click="BrowseButton_Click" Background="Blue" Foreground="White"/>
             <TextBox x:Name="filePathTextBox" Margin="0,10,0,0" IsReadOnly="True" />
             <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
-                <Button Content="Upload" Width="80" Height="30" Click="UploadButton_Click"/>
-                <Button Content="Cancel" Width="80" Height="30" Click="CancelButton_Click"/>
+                <Button Content="Upload" Width="80" Height="30" Click="UploadButton_Click" Background="Blue" Foreground="White"/>
+                <Button Content="Cancel" Width="80" Height="30" Click="CancelButton_Click" Background="Blue" Foreground="White"/>
             </StackPanel>
         </StackPanel>
     </Grid>
