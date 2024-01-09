@@ -1,13 +1,27 @@
-var fileAppender = new log4net.Appender.FileAppender();
-fileAppender.File = logFilePath;
-fileAppender.AppendToFile = true;
+string currentDirectory = Server.MapPath("~/"); // Use Server.MapPath to get the physical path
+        string logFileName = "MyLogFile.log";
+        string logFilePath = Path.Combine(currentDirectory, logFileName);
 
-var patternLayout = new log4net.Layout.PatternLayout("%date [%thread] %-5level %logger [%property{NDC}] - %message%newline");
-patternLayout.ActivateOptions();
+        // Log the dynamic log file path for debugging
+        log.Info($"Dynamic Log File Path: {logFilePath}");
 
-fileAppender.Layout = patternLayout;
-fileAppender.ActivateOptions();
+        // Set the log file path in the log4net properties
+        GlobalContext.Properties["LogFilePath"] = logFilePath;
 
-var rootLogger = ((log4net.Repository.Hierarchy.Hierarchy)LogManager.GetRepository()).Root;
-rootLogger.RemoveAllAppenders();
-rootLogger.AddAppender(fileAppender);
+        // Configure log4net programmatically
+        var fileAppender = new FileAppender();
+        fileAppender.File = logFilePath;
+        fileAppender.AppendToFile = true;
+
+        var patternLayout = new PatternLayout("%date [%thread] %-5level %logger [%property{NDC}] - %message%newline");
+        patternLayout.ActivateOptions();
+
+        fileAppender.Layout = patternLayout;
+        fileAppender.ActivateOptions();
+
+        var rootLogger = ((log4net.Repository.Hierarchy.Hierarchy)LogManager.GetRepository()).Root;
+        rootLogger.RemoveAllAppenders();
+        rootLogger.AddAppender(fileAppender);
+
+        // Log a test message
+        log.Info("Log4net is configured and ready to log messages.");
