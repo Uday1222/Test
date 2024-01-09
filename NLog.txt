@@ -1,0 +1,43 @@
+----log4net.config-----
+
+<?xml version="1.0" encoding="utf-8" ?>
+<log4net>
+  <appender name="FileAppender" type="log4net.Appender.FileAppender">
+    <file value="%property{LogFilePath}" />
+    <!-- other configurations... -->
+  </appender>
+
+  <!-- other configurations... -->
+</log4net>
+
+
+
+------------
+
+using System;
+using System.IO;
+using System.Web;
+using log4net;
+using log4net.Config;
+
+public class Global : HttpApplication
+{
+    private static readonly ILog log = LogManager.GetLogger(typeof(Global));
+
+    protected void Application_Start(object sender, EventArgs e)
+    {
+        // Set the log file path to the current directory
+        string currentDirectory = Server.MapPath("~/"); // Use Server.MapPath to get the physical path
+        string logFilePath = Path.Combine(currentDirectory, "MyLogFile.log");
+
+        // Set the log file path in the log4net properties
+        GlobalContext.Properties["LogFilePath"] = logFilePath;
+
+        // Configure log4net
+        var logConfig = new FileInfo(Server.MapPath("~/log4net.config"));
+        XmlConfigurator.ConfigureAndWatch(logConfig);
+
+        // Log a test message
+        log.Info("Log4net is configured and ready to log messages.");
+    }
+}
