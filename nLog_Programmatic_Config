@@ -1,0 +1,13 @@
+var fileAppender = new log4net.Appender.FileAppender();
+fileAppender.File = logFilePath;
+fileAppender.AppendToFile = true;
+
+var patternLayout = new log4net.Layout.PatternLayout("%date [%thread] %-5level %logger [%property{NDC}] - %message%newline");
+patternLayout.ActivateOptions();
+
+fileAppender.Layout = patternLayout;
+fileAppender.ActivateOptions();
+
+var rootLogger = ((log4net.Repository.Hierarchy.Hierarchy)LogManager.GetRepository()).Root;
+rootLogger.RemoveAllAppenders();
+rootLogger.AddAppender(fileAppender);
