@@ -1,0 +1,78 @@
+@{
+    ViewBag.Title = "Dropdown Sections Example";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <style>
+        /* Style for the dropdown sections */
+        .dropdown-section {
+            padding: 20px;
+            border: 1px solid #ccc;
+            margin-bottom: 20px;
+        }
+
+        /* Style for the selected object title */
+        .selected-title {
+            color: #333;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        /* Style for the dropdown */
+        select {
+            width: 200px;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- First Dropdown Section -->
+    <div class="dropdown-section" style="background-color: #f0f8ff;">
+        <div class="selected-title">Color Section 1</div>
+        <label>Select an object:</label>
+        <select id="dropdown1">
+            <option value="object1">Object 1</option>
+            <option value="object2">Object 2</option>
+            <!-- Add more options as needed -->
+        </select>
+    </div>
+
+    <!-- Second Dropdown Section -->
+    <div class="dropdown-section" style="background-color: #ffe4c4;">
+        <div class="selected-title">Color Section 2</div>
+        <label>Select an object:</label>
+        <select id="dropdown2">
+            <option value="objectA">Object A</option>
+            <option value="objectB">Object B</option>
+            <!-- Add more options as needed -->
+        </select>
+    </div>
+
+    <!-- Your content goes here -->
+
+</body>
+</html>
+
+
+
+      <!-- JavaScript for handling dropdown changes -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // Change event for dropdown1
+        $("#dropdown1").change(function () {
+            var selectedObject = $(this).val();
+            $(".selected-title:eq(0)").text("Color Section 1 - Selected: " + selectedObject);
+        });
+
+        // Change event for dropdown2
+        $("#dropdown2").change(function () {
+            var selectedObject = $(this).val();
+            $(".selected-title:eq(1)").text("Color Section 2 - Selected: " + selectedObject);
+        });
+    });
+</script>
