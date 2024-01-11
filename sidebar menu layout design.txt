@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Your MVC Application</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-Dqc5LG4ksOrLz4kNTqC5pPzhNSiJjgXQhD+9fyXMVLZ3yDgPCcyFzZv/J0yB/xsYb01rGFLIPVzwF8VUEi0B0A==" crossorigin="anonymous" />
     <style>
         body {
-            padding-top: 50px; /* Adjust based on your navigation bar height */
+            padding-top: 50px;
         }
 
         #side-menu {
@@ -17,8 +18,9 @@
             width: 250px;
             height: 100%;
             background-color: #333;
-            padding-top: 50px; /* Adjust based on your navigation bar height */
+            padding-top: 50px;
             transition: all 0.3s;
+            z-index: 1;
         }
 
         #side-menu ul {
@@ -29,6 +31,9 @@
         #side-menu a {
             color: #fff;
             text-decoration: none;
+            display: block;
+            padding: 10px;
+            transition: background-color 0.3s;
         }
 
         #side-menu a:hover {
@@ -40,7 +45,17 @@
             left: 10px;
             top: 10px;
             cursor: pointer;
-            z-index: 1000;
+            z-index: 2;
+        }
+
+        #content {
+            transition: margin-left 0.3s;
+            margin-left: 0;
+            padding: 16px;
+        }
+
+        #menu-toggle i {
+            font-size: 24px;
         }
     </style>
 </head>
@@ -48,29 +63,26 @@
 
     <div id="side-menu">
         <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="#"><i class="fas fa-info-circle"></i> About</a></li>
+            <li><a href="#"><i class="fas fa-envelope"></i> Contact</a></li>
             <!-- Add more menu items as needed -->
         </ul>
     </div>
 
     <div id="content">
-        <div id="menu-toggle">&#9776; Menu</div>
+        <div id="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
         @RenderBody()
     </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script>
-        $(document).ready(function () {
-            $("#menu-toggle").click(function () {
-                $("#side-menu").animate({ left: 'toggle' }, 200);
-            });
-        });
+        function toggleMenu() {
+            $("#side-menu").animate({ left: 'toggle' }, 200);
+            $("#content").toggleClass("menu-open");
+        }
     </script>
 
 </body>
 </html>
-
-/////////
