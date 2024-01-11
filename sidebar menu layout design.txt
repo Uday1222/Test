@@ -6,6 +6,8 @@
     <title>@ViewBag.Title - Your MVC Application</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-Dqc5LG4ksOrLz4kNTqC5pPzhNSiJjgXQhD+9fyXMVLZ3yDgPCcyFzZv/J0yB/xsYb01rGFLIPVzwF8VUEi0B0A==" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <style>
         body {
             padding-top: 50px;
@@ -75,8 +77,6 @@
         @RenderBody()
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script>
         function toggleMenu() {
             $("#side-menu").animate({ left: 'toggle' }, 200);
