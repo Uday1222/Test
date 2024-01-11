@@ -41,3 +41,5 @@ public class Global : HttpApplication
         log.Info("Log4net is configured and ready to log messages.");
     }
 }
+
+//test
