@@ -7,3 +7,19 @@
             </ComboBox.ItemTemplate>
         </ComboBox>
         <Button Content="Submit" Width="75" Height="25" Margin="10" Click="SubmitButton_Click"/>
+
+
+<Window.DataContext>
+    <local:TableName />
+</Window.DataContext>
+
+public class TableName
+    {
+        public ObservableCollection<string> YourItems { get; } = new ObservableCollection<string>
+        {
+            "Option 1",
+            "Option 2",
+            "Option 3"
+            // Add more items as needed
+        };
+    }
